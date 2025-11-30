@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultanov Shop Studio - Mahsulot Joylash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Asosiy Sozlamalar (Asosiy Shop CSS'ga mos) --- */
+        :root {
+            --primary-color: #ff0000; /* Qizil */
+            --bg-color: #050505; /* Qora */
+            --card-bg: #1a1a1a; 
+            --text-color: #ffffff;
+            --text-secondary: #b3b3b3;
+            --input-bg: #222;
+            --border: rgba(255, 255, 255, 0.1);
+            --success-color: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        .studio-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        h2 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .studio-input, .studio-select, .studio-textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--input-bg);
+            border: 1px solid #444;
+            border-radius: 10px;
+            color: white;
+            outline: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .studio-input:focus, .studio-textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(255,0,0,0.3);
+        }
+
+        .studio-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-btn i {
+            margin-right: 10px;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Natija xabarlari */
+        #result-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .error {
+            background-color: rgba(255, 0, 0, 0.2);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Qoida bloki */
+        .info-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--telegram-color, #0088cc);
+            margin-top: 30px;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+        
+        .info-block h4 {
+            color: var(--telegram-color, #0088cc);
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-video"></i> SULTANOV SHOP STUDIO</h1>
+    </header>
+
+    <div class="studio-container">
+        <h2>Mahsulot Ma'lumotlarini Kiritish</h2>
+        
+        <form id="product-form">
+            
+            <div class="input-group">
+                <label for="studio-name">👤 Studio Xodimi / Taxallus</label>
+                <input type="text" id="studio-name" class="studio-input" placeholder="Ismingiz/Taxallusingiz" required>
+            </div>
+
+            <div class="input-group">
+                <label for="product-name">📝 Mahsulot Nomi</label>
+                <input type="text" id="product-name" class="studio-input" placeholder="Masalan: 3D Kublar To'plami" required>
+            </div>
+
+            <div class="input-group">
+                <label for="product-category">📁 Kategoriya</label>
+                <select id="product-category" class="studio-select" required>
+                    <option value="">Kategoriyani tanlang</option>
+                    <option value="school">Maktab (School)</option>
+                    <option value="auto">Mashina (Auto)</option>
+                    <option value="clothes">Kiyimlar (Clothes)</option>
+                    <option value="perfume">Parfyumeriya (Perfume)</option>
+                    <option value="sultanov">Sultanov Maxsus</option>
+                    <option value="other">Boshqa</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="product-price">💰 Narxi (Masalan: 40 000 so'm)</label>
+                <input type="text" id="product-price" class="studio-input" placeholder="Faqat raqam yoki matn bilan kiriting" required>
+            </div>
+
+            <div class="input-group">
+                <label for="product-img">🔗 Mahsulot Rasmining Linki (To'g'ridan-to'g'ri URL)</label>
+                <input type="url" id="product-img" class="studio-input" placeholder="https://rasm-manzili.uz/foto.jpg" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="product-contact">📞 Sotuvchining Telefon Raqami</label>
+                <input type="tel" id="product-contact" class="studio-input" placeholder="+998 XX YYY YY YY" required>
+            </div>
+
+            <div class="input-group">
+                <label for="product-desc">📃 Mahsulot Tavsifi (Qisqa va aniq)</label>
+                <textarea id="product-desc" class="studio-textarea" placeholder="Mahsulot haqida asosiy ma'lumotlar" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+                <i class="fas fa-paper-plane"></i> Ma'lumotlarni yuborish
+            </button>
+        </form>
+
+        <div id="result-message"></div>
+        
+        <div class="info-block">
+            <h4><i class="fas fa-info-circle"></i> Eslatma va Qoidalar:</h4>
+            <ul>
+                <li>Studio xodimlarining **birinchi mahsuloti** uchun to'lov olinmaydi.</li>
+                <li>Diqqat yuborishdan oldin botga oldindan start bosing aks holda mahsulot kuyib ketadi.</li>
+                <li>Ma'lumot yuborilgandan keyin 24 soat ichida mahsulotingiz ko'rib chiqiladi va mahsulotingizni foydalanuvchilarga bevosita o'zingiz sotasiz. Bot sizga javob yozishini kuting sizga mahsulot uchun ID beriladi va sizning telegram username ma'lumotingiz so'raladi.</li>
+                <a href="https://t.me/SultanovStudioBot?start=" class="submit-btn" id="submit-btn">
+    <i class="fas fa-paper-plane"></i> BOTGA OLDINDAN START BOSISH
+</a>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_TG_USERNAME = "SultanovStudioBot";
+        const FORM_KEY = "studio_products_count"; // LocalStorage kaliti
+        
+        function getStudioProductCount(studioName) {
+            const data = JSON.parse(localStorage.getItem(FORM_KEY) || "{}");
+            // Xodim nomini kichik harfga o'tkazib saqlaymiz
+            return data[studioName.toLowerCase()] || 0;
+        }
+
+        function incrementProductCount(studioName) {
+            const data = JSON.parse(localStorage.getItem(FORM_KEY) || "{}");
+            const key = studioName.toLowerCase();
+            data[key] = (data[key] || 0) + 1;
+            localStorage.setItem(FORM_KEY, JSON.stringify(data));
+        }
+
+        function generateUniqueId() {
+            // Mahsulot ID sini generatsiya qilish: Hozirgi sana sekundlari + 3 xonali random
+            const now = new Date();
+            const timePart = now.getHours().toString().padStart(2, '0') + 
+                             now.getMinutes().toString().padStart(2, '0') + 
+                             now.getSeconds().toString().padStart(2, '0');
+            const randomPart = Math.floor(Math.random() * 900) + 100; // 100 dan 999 gacha
+            return parseInt(timePart + randomPart.toString());
+        }
+
+        document.getElementById('product-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const studioName = document.getElementById('studio-name').value;
+            const name = document.getElementById('product-name').value;
+            const category = document.getElementById('product-category').value;
+            const price = document.getElementById('product-price').value;
+            const imgUrl = document.getElementById('product-img').value;
+            const contact = document.getElementById('product-contact').value;
+            const desc = document.getElementById('product-desc').value;
+            
+            const productCount = getStudioProductCount(studioName);
+            const isFirstProduct = productCount === 0;
+            const productId = generateUniqueId();
+            
+            let messageStatus = isFirstProduct ? "✅ BEPUL" : "💰 TO'LOV KUTILMOQDA";
+
+            const telegramMessage = `
+*--- 🎬 Yangi Mahsulot Kiritildi ---*
+
+*ID:* ${productId}
+*Xodim:* ${studioName}
+*Kategoriya:* ${category}
+*Nomi:* ${name}
+*Narxi:* ${price}
+*Sotuvchi Tel:* ${contact}
+*Holat:* ${messageStatus}
+
+*Tavsif:*
+${desc}
+
+*Rasm Linki:* ${imgUrl}
+`;
+
+            // Telegram linkini URL kodlash
+            const encodedMessage = encodeURIComponent(telegramMessage);
+            const tgLink = `https://t.me/${ADMIN_TG_USERNAME}?text=${encodedMessage}`;
+
+            // 1. Hisoblagichni yangilash
+            incrementProductCount(studioName);
+
+            // 2. Natijani ko'rsatish
+            const resultDiv = document.getElementById('result-message');
+            resultDiv.classList.remove('error');
+            resultDiv.classList.add('success');
+            
+            resultDiv.innerHTML = `
+                <i class="fas fa-check-circle"></i> Mahsulot muvaffaqiyatli jo'natildi!<br>
+                Mahsulot ID raqami: <b>${productId}</b>.<br>
+                ${isFirstProduct ? '🎉 Bu sizning birinchi mahsulotingiz, to\'lovsiz qabul qilindi!' : '⚠️ To\'lov tasdiqlanishini kuting.'}
+            `;
+            resultDiv.style.display = 'block';
+
+            // 3. Admin bilan aloqa ochish
+            window.open(tgLink, '_blank');
+
+            // 4. Formani tozalash (Xodim nomidan tashqari)
+            document.getElementById('product-name').value = '';
+            document.getElementById('product-category').value = '';
+            document.getElementById('product-price').value = '';
+            document.getElementById('product-img').value = '';
+            document.getElementById('product-contact').value = '';
+            document.getElementById('product-desc').value = '';
+            
+            // 5. 5 soniyadan keyin xabarni yashirish
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 8000);
+        });
+    </script>
+</body>
+</html>
