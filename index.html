@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Asosiy Sozlamalar (Asosiy Shop CSS'ga mos) --- */
+        /* --- Asosiy Sozlamalar --- */
         :root {
-            --primary-color: #ff0000; /* Qizil */
-            --bg-color: #050505; /* Qora */
+            --primary-color: #ff0000;
+            --bg-color: #050505;
             --card-bg: #1a1a1a; 
             --text-color: #ffffff;
             --text-secondary: #b3b3b3;
@@ -20,160 +20,41 @@
             --success-color: #28a745;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px; min-height: 100vh; }
         
-        header h1 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: pulse 1s infinite alternate;
-        }
+        header { text-align: center; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+        header h1 { font-size: 1.8rem; color: var(--primary-color); text-transform: uppercase; letter-spacing: 3px; animation: pulse 1s infinite alternate; }
+        @keyframes pulse { from { opacity: 0.8; } to { opacity: 1; } }
 
-        @keyframes pulse {
-            from { opacity: 0.8; }
-            to { opacity: 1; }
-        }
+        .studio-container { max-width: 600px; margin: 0 auto; background: var(--card-bg); border-radius: 20px; padding: 30px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+        h2 { font-size: 1.2rem; color: #fff; margin-bottom: 20px; border-left: 4px solid var(--primary-color); padding-left: 10px; }
 
-        .studio-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid #333;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
+        .input-group { margin-bottom: 18px; }
+        .input-group label { display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; }
+        .studio-input, .studio-select, .studio-textarea { width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid #444; border-radius: 10px; color: white; outline: none; font-size: 0.9rem; transition: 0.3s; }
+        .studio-input:focus, .studio-textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(255,0,0,0.3); }
+        .studio-textarea { resize: vertical; min-height: 100px; }
+
+        /* Tugmalar stillari */
+        .submit-btn { width: 100%; padding: 15px; background: var(--primary-color); border: none; border-radius: 10px; color: white; font-weight: bold; font-size: 1rem; cursor: pointer; margin-top: 20px; transition: transform 0.2s, background 0.3s; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        .submit-btn i { margin-right: 10px; }
+        .submit-btn:active { transform: scale(0.98); }
         
-        h2 {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
-        }
-
-        .input-group {
-            margin-bottom: 18px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .studio-input, .studio-select, .studio-textarea {
-            width: 100%;
-            padding: 12px;
-            background: var(--input-bg);
-            border: 1px solid #444;
-            border-radius: 10px;
-            color: white;
-            outline: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .studio-input:focus, .studio-textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(255,0,0,0.3);
-        }
-
-        .studio-textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--primary-color);
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: transform 0.2s, background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .submit-btn i {
-            margin-right: 10px;
-        }
-
-        .submit-btn:active {
-            transform: scale(0.98);
-        }
+        /* Telegram Start tugmasi uchun maxsus rang (ixtiyoriy) */
+        .telegram-btn { background-color: #0088cc; margin-top: 10px; }
+        .telegram-btn:hover { background-color: #0077b5; }
 
         /* Natija xabarlari */
-        #result-message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
+        #result-message { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-weight: 600; display: none; animation: fadeIn 0.5s ease; }
+        .success { background-color: rgba(40, 167, 69, 0.2); color: var(--success-color); border: 1px solid var(--success-color); }
+        .error { background-color: rgba(255, 0, 0, 0.2); color: var(--primary-color); border: 1px solid var(--primary-color); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .success {
-            background-color: rgba(40, 167, 69, 0.2);
-            color: var(--success-color);
-            border: 1px solid var(--success-color);
-        }
-
-        .error {
-            background-color: rgba(255, 0, 0, 0.2);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Qoida bloki */
-        .info-block {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--telegram-color, #0088cc);
-            margin-top: 30px;
-            color: #aaa;
-            font-size: 0.85rem;
-        }
-        
-        .info-block h4 {
-            color: var(--telegram-color, #0088cc);
-            margin-bottom: 5px;
-        }
+        .info-block { background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 10px; border-left: 4px solid #0088cc; margin-top: 30px; color: #aaa; font-size: 0.85rem; }
+        .info-block h4 { color: #0088cc; margin-bottom: 5px; }
+        .info-block ul { list-style: none; padding-left: 5px; }
+        .info-block li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -242,10 +123,11 @@
             <ul>
                 <li>Studio xodimlarining **birinchi mahsuloti** uchun to'lov olinmaydi.</li>
                 <li>Diqqat yuborishdan oldin botga oldindan start bosing aks holda mahsulot kuyib ketadi.</li>
-                <li>Ma'lumot yuborilgandan keyin 24 soat ichida mahsulotingiz ko'rib chiqiladi va mahsulotingizni foydalanuvchilarga bevosita o'zingiz sotasiz. Bot sizga javob yozishini kuting sizga mahsulot uchun ID beriladi va sizning telegram username ma'lumotingiz so'raladi.</li>
-               <a href="tg://resolve?domain=SultanovStudioBot&start=" class="submit-btn" id="submit-btn">
-    <i class="fas fa-paper-plane"></i> BOTGA OLDINDAN START BOSISH
-</a>
+                <li>Ma'lumot yuborilgandan keyin 24 soat ichida mahsulotingiz ko'rib chiqiladi.</li>
+                
+                <a href="tg://resolve?domain=SultanovStudioBot&start=" class="submit-btn telegram-btn">
+                    <i class="fas fa-paper-plane"></i> BOTGA OLDINDAN START BOSISH
+                </a>
             
             </ul>
         </div>
@@ -253,11 +135,10 @@
 
     <script>
         const ADMIN_TG_USERNAME = "SultanovStudioBot";
-        const FORM_KEY = "studio_products_count"; // LocalStorage kaliti
+        const FORM_KEY = "studio_products_count"; 
         
         function getStudioProductCount(studioName) {
             const data = JSON.parse(localStorage.getItem(FORM_KEY) || "{}");
-            // Xodim nomini kichik harfga o'tkazib saqlaymiz
             return data[studioName.toLowerCase()] || 0;
         }
 
@@ -269,12 +150,11 @@
         }
 
         function generateUniqueId() {
-            // Mahsulot ID sini generatsiya qilish: Hozirgi sana sekundlari + 3 xonali random
             const now = new Date();
             const timePart = now.getHours().toString().padStart(2, '0') + 
                              now.getMinutes().toString().padStart(2, '0') + 
                              now.getSeconds().toString().padStart(2, '0');
-            const randomPart = Math.floor(Math.random() * 900) + 100; // 100 dan 999 gacha
+            const randomPart = Math.floor(Math.random() * 900) + 100;
             return parseInt(timePart + randomPart.toString());
         }
 
@@ -312,9 +192,13 @@ ${desc}
 *Rasm Linki:* ${imgUrl}
 `;
 
-            // Telegram linkini URL kodlash
+            // URL kodlash
             const encodedMessage = encodeURIComponent(telegramMessage);
-            const tgLink = `https://t.me/${ADMIN_TG_USERNAME}?text=${encodedMessage}`;
+            
+            // --- MUHIM O'ZGARISH: Telegramni alohida ilova sifatida ochish siri ---
+            // 'https://t.me/...' o'rniga 'tg://resolve?domain=...' ishlatildi.
+            // Bu brauzer ichida emas, to'g'ridan-to'g'ri Telegram ilovasini ochadi.
+            const tgLink = `tg://resolve?domain=${ADMIN_TG_USERNAME}&text=${encodedMessage}`;
 
             // 1. Hisoblagichni yangilash
             incrementProductCount(studioName);
@@ -325,16 +209,20 @@ ${desc}
             resultDiv.classList.add('success');
             
             resultDiv.innerHTML = `
-                <i class="fas fa-check-circle"></i> Mahsulot muvaffaqiyatli jo'natildi!<br>
+                <i class="fas fa-check-circle"></i> Mahsulot tayyorlandi!<br>
                 Mahsulot ID raqami: <b>${productId}</b>.<br>
-                ${isFirstProduct ? '🎉 Bu sizning birinchi mahsulotingiz, to\'lovsiz qabul qilindi!' : '⚠️ To\'lov tasdiqlanishini kuting.'}
+                Telegram ochilmoqda...
             `;
             resultDiv.style.display = 'block';
 
-            // 3. Admin bilan aloqa ochish
-            window.open(tgLink, '_blank');
+            // 3. Telegramni majburiy ilova sifatida ochish
+            // window.open o'rniga window.location.href ishlatish 
+            // APK ichida tashqi ilovani chaqirish uchun ishonchliroqdir.
+            setTimeout(() => {
+                window.location.href = tgLink;
+            }, 1000); // 1 soniya kutib keyin ochadi, foydalanuvchi xabarni o'qishi uchun
 
-            // 4. Formani tozalash (Xodim nomidan tashqari)
+            // 4. Formani tozalash
             document.getElementById('product-name').value = '';
             document.getElementById('product-category').value = '';
             document.getElementById('product-price').value = '';
@@ -342,10 +230,10 @@ ${desc}
             document.getElementById('product-contact').value = '';
             document.getElementById('product-desc').value = '';
             
-            // 5. 5 soniyadan keyin xabarni yashirish
+            // 5. Xabarni yashirish
             setTimeout(() => {
                 resultDiv.style.display = 'none';
-            }, 8000);
+            }, 5000);
         });
     </script>
 </body>
